@@ -1,5 +1,9 @@
 const express = require('express')
 const path = require('path')
+const methodOverride = require('method-override');
+
+
+
 //importar handlebars
 
 const {engine} = require('express-handlebars')
@@ -18,6 +22,7 @@ app.set('views',path.join(__dirname,'views'))
 //middlewares
 //trabaja con inforamcion en base a formularios
 app.use(express.urlencoded({extended:false}))
+app.use(methodOverride('_method'))
 
 //Variables globales
 
@@ -47,6 +52,7 @@ app.engine('.hbs',engine({
 app.set('view engine','.hbs')
 
 app.use(require('./routers/index.routes'))
+app.use(require('./routers/portafolio.routes'))
 
 //exportar app
 module.exports = app

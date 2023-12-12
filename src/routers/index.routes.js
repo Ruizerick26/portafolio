@@ -1,16 +1,13 @@
 //importar routes de express
 
 const {Router} = require('express')
+const { renderIndex, renderLogin } = require('../controllers/index.controllers')
 //instanciar routers
 const router = Router()
 
-router.get('/',(req,res)=>{
-    res.render('index')
-})
+router.get('/',renderIndex)
 
 
-router.get('/login',(req,res)=>{
-    res.render('login')
-})
+router.get('/login',renderLogin)
 
 module.exports = router

@@ -18,4 +18,4 @@ const portfolioSchema = new Schema({
 },{
     timestamps:true
 })
- modeule.exports = model('portfolio',portfolioSchema)
+ module.exports = model('portfolio',portfolioSchema)
