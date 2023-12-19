@@ -6,8 +6,8 @@ const passport = require('passport');
 const session = require('express-session');
 
 //importar handlebars
-
 const {engine} = require('express-handlebars')
+const fileUpload = require('express-fileupload')
 
 //Instanciar Express
 const app = express()
@@ -22,9 +22,6 @@ app.set('port',process.env.port || 3000)
 app.set('views',path.join(__dirname,'views'))
 
 //middlewares
-//Servidor va a trabajr con información de base a formularios
-app.use(express.urlencoded({extended:false}))
-app.use(methodOverride('_method'))
 //confgurar la sesion del usuario
 app.use(session({ 
     secret: 'secret',
@@ -34,20 +31,27 @@ app.use(session({
 //inicializar passport y session
 app.use(passport.initialize())
 app.use(passport.session())
+//Servidor va a trabajr con información de base a formularios
+app.use(express.urlencoded({extended:false}))
+app.use(methodOverride('_method'))
+
+app.use(require('./routers/user.routes'))
+
 //trabaja con inforamcion en base a formularios
 app.use(express.urlencoded({extended:false}))
 app.use(methodOverride('_method'))
-app.use(require('./routers/user.routes'))
 //Variables globales
 
-//primera ruta
-app.get('/',(req,res)=>{
-    res.render('index')
-})
 
 //Archivo estatico
 //definir archivo estatico y publico
 app.use(express.static(path.join(__dirname,'public')))
+
+//establecer la carpeta temporal y de directorio
+app.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir : './uploads'
+}));
 
 //establecer el path de la carpeta views
 app.set('views',path.join(__dirname, 'views'))
@@ -62,19 +66,25 @@ app.engine('.hbs',engine({
     //extencion delas paginas
     extname:'.hbs'
 }))
-//establecer motor de plantillas
-app.set('view engine','.hbs')
-
-app.use(require('./routers/index.routes'))
-app.use(require('./routers/portafolio.routes'))
-
-
 // Variables globales
 app.use((req,res,next)=>{
     //encadenamiento global
     res.locals.user = req.user?.name || null
     next()
 })
+//establecer motor de plantillas
+app.set('view engine','.hbs')
+
+app.use(require('./routers/index.routes'))
+app.use(require('./routers/portafolio.routes'))
+
+//primera ruta
+app.get('/',(req,res)=>{
+    res.render('index')
+})
+
+
+
 
 
 

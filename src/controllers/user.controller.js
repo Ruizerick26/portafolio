@@ -1,4 +1,4 @@
-
+const passport = require("passport")
 const User = require('../models/User')
 const renderRegisterForm =(req,res)=>{
     res.render('user/registerForm')
@@ -25,12 +25,8 @@ const registerNewUser =async(req,res)=>{
 }
 
 const renderLoginForm =(req,res)=>{
-
     res.render('user/loginForm')
 }
-
-const passport = require("passport")
-
 
 // Primera forma 
 // const loginUser = async(req,res)=>{
@@ -60,9 +56,6 @@ const logoutUser =(req,res)=>{
         res.redirect('/');
     });
 }
-
-
-
 
 
 module.exports={

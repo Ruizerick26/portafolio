@@ -1,7 +1,10 @@
 const Portfolio = require('../models/Portfolio')
+const { uploadImage } = require('../config/cloudinary')
 //Listar protafolios
 const renderAllPortafolios = async(req,res)=>{
-    const portfolios = await Portfolio.find().lean()
+    //listar todos los portafolios y tranformar en Objetos learn
+    const portfolios = await Portfolio.find({user:req.user._id}).lean()
+    //mandar a las vista los portafolios
     res.render("portafolio/allPortfolios",{portfolios})
 }
 
@@ -24,11 +27,13 @@ const createNewPortafolio =async (req,res)=>{
     //nueva instancia 
     const newPortfolio = new Portfolio({title,category,description})
     //guardar en la base de datos
-    await newPortfolio.save()
+    newPortfolio.user = req.user._id
+    if(!(req.files?.image)) return res.send("Se requiere una imagen")
+    await uploadImage(req.files.image.tempFilePath)
+    await newPortfolio.save()   
     //mostrar resultados
     //res.json({newPortfolio})
-    res.redirect('/portafolios')
-    
+    res.redirect('/portafolios') 
 }
 
 //Actualiza formulario
