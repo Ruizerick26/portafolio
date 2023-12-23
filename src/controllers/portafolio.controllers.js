@@ -1,7 +1,10 @@
 const Portfolio = require('../models/Portfolio')
+const { uploadImage } = require('../config/cloudinary')
 //Listar protafolios
 const renderAllPortafolios = async(req,res)=>{
-    const portfolios = await Portfolio.find().lean()
+    //listar todos los portafolios y tranformar en Objetos learn
+    const portfolios = await Portfolio.find({user:req.user._id}).lean()
+    //mandar a las vista los portafolios
     res.render("portafolio/allPortfolios",{portfolios})
 }
 
@@ -24,25 +27,32 @@ const createNewPortafolio =async (req,res)=>{
     //nueva instancia 
     const newPortfolio = new Portfolio({title,category,description})
     //guardar en la base de datos
-    await newPortfolio.save()
+    newPortfolio.user = req.user._id
+    if(!(req.files?.image)) return res.send("Se requiere una imagen")
+    await uploadImage(req.files.image.tempFilePath)
+    await newPortfolio.save()   
     //mostrar resultados
-    res.json({newPortfolio})
-    
+    //res.json({newPortfolio})
+    res.redirect('/portafolios') 
 }
 
 //Actualiza formulario
-const renderEditPortafolioForm = (req,res)=>{
-    res.send('Formulario para editar un portafolio')
+const renderEditPortafolioForm = async(req,res)=>{
+    const portfolio = await Portfolio.findById(req.params.id).lean()
+    res.render('portafolio/editPortfolio',{portfolio})
 }
 
 //Guardar en la BDD
-const updatePortafolio = (req,res)=>{
-    res.send('Editar un portafolio')
+const updatePortafolio =async (req,res)=>{
+    const {title,category,description}= req.body
+    await Portfolio.findByIdAndUpdate(req.params.id,{title,category,description})
+    res.redirect('/portafolios')
 }
 
 //Eliminar datos en la BDD
-const deletePortafolio = (req,res)=>{
-    res.send('Eliminar un nuevo portafolio')
+const deletePortafolio = async (req,res)=>{
+    await Portfolio.findByIdAndDelete(req.params.id)
+    res.redirect('/portafolios')
 }
 
 
