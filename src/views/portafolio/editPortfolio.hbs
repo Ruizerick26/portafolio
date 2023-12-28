@@ -13,8 +13,7 @@
                 <!-- Portfolio Section Form-->
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-xl-7">
-                        <form action="/portafolio/edit/{{portfolio._id}}?_method=PUT" method="POST" class="d-inline">
-                            
+                        <form action="/portafolio/edit/{{portfolio._id}}?_method=PUT" method="POST" class="d-inline" enctype="multipart/form-data">
                             <input type="hidden" name="_method" value="PUT">
                             
                             <!-- Title input-->
@@ -29,6 +28,11 @@
                                 <input class="form-control" id="category" type="text" placeholder="Enter your title..." required name="category"
                                 value="{{portfolio.category}}"/>
                                 <label for="category">Category</label>
+                            </div>
+                            <!-- Image input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="image" type="file" placeholder="Select your imagen..."  name="image" />
+                                <label for="image">Image</label>
                             </div>
 
                             <!-- Description input-->

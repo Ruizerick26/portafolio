@@ -20,8 +20,9 @@ passport.use(new LocalStrategy({
     const passwordUser = await userBDD.matchPassword(password)
     //Veridicar el password
     if(!passwordUser) return done("Lo sentimos, los passwords no coinciden",false)
+    if(userBDD.confirmEmail===false) return done("Lo sentimos, debe verificar la cuenta en su correo electrónico",false)
     //retorna el usuario de la BDD
-return done(null,userBDD)
+    return done(null,userBDD)
 }))
 
 

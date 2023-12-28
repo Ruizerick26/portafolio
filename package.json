@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
+  },
   "scripts": {
     "start": "node src/index.js",
     "dev": "node --watch src/index.js"
@@ -19,8 +22,10 @@
     "express-fileupload": "^1.4.3",
     "express-handlebars": "^7.1.2",
     "express-session": "^1.17.3",
+    "fs-extra": "^11.2.0",
     "method-override": "^3.0.0",
     "mongoose": "^8.0.3",
+    "nodemailer": "^6.9.7",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0"
   },
