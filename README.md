@@ -1,7 +1,6 @@
-# LABORATORIO 11 y 12
+# Proyecto Portafolio Examen Bimestral
 
--Avances del proyecto portafolio, creación de controladores, creación de rutas y CRUD del portafolio
--Avances del proyecto protafolio, craeción de login y logout, y subir imagenes a cloudinary
+- Elaboración del proyecto Portafolio para presentación de examen Bimestral, el proyecto en cuestion cuenta con una conexión a una base de dato online MongoDB Atlas, servicio de correo electrónico con MailTrap, y formulario de contacto con FORMSUBMIT.
 
 
 
@@ -53,6 +52,60 @@
 ![imagen](https://github.com/Ruizerick26/portafolio/assets/117743844/47277910-a9e4-41d6-b517-b654389f9c8e)
 ![imagen](https://github.com/Ruizerick26/portafolio/assets/117743844/ab72fc81-5183-4450-aebd-6780a707e53f)
 ![imagen](https://github.com/Ruizerick26/portafolio/assets/117743844/ffe07894-a3a2-4808-a2cd-d9e06c94fed8)
+
+
+## Envio de correo con MailTrap - SPRINT 1
+![imagen](https://github.com/Ruizerick26/portafolio/assets/117743844/07bf92a6-c521-49a9-9aab-92721393290e)
+
+![imagen](https://github.com/Ruizerick26/portafolio/assets/117743844/f20eb8d8-c93a-4352-b242-b2a2928d6e2d)
+
+![imagen](https://github.com/Ruizerick26/portafolio/assets/117743844/0d1f5c7d-27a6-49e3-9d8a-70bb58b3ce41)
+
+## Listar Formularios en la página principal - SPRINT 2
+![imagen](https://github.com/Ruizerick26/portafolio/assets/117743844/b17e5db2-06ab-44ae-8a04-d677f7d01bdc)
+
+![imagen](https://github.com/Ruizerick26/portafolio/assets/117743844/1e4a1785-ac0a-410d-a89c-b503bdca4ebc)
+
+![imagen](https://github.com/Ruizerick26/portafolio/assets/117743844/1809892c-b909-4786-abd8-d7ee9c805b5b)
+
+## Formulario de contacto con FORMSUBMIT - SPRINT 3
+![imagen](https://github.com/Ruizerick26/portafolio/assets/117743844/a8571070-215e-402a-8e79-04d7aa0ecd73)
+
+![imagen](https://github.com/Ruizerick26/portafolio/assets/117743844/1fb9122f-daeb-4736-ab1f-e7f4242bcb87)
+
+## Configuración de MONGODB ATLAS y del aplicativo
+![imagen](https://github.com/Ruizerick26/portafolio/assets/117743844/a2e4840f-4697-4cd0-b54f-436235641468)
+
+![imagen](https://github.com/Ruizerick26/portafolio/assets/117743844/da73305c-9dfe-4cc6-9101-cd05a8087198)
+
+![imagen](https://github.com/Ruizerick26/portafolio/assets/117743844/f7160b19-f627-429f-b041-054a347a4763)
+
+## DEPLOY
+- Variables de entorno
+  
+![imagen](https://github.com/Ruizerick26/portafolio/assets/117743844/19495231-642d-402c-bd5b-a2a232eb86cc)
+
+- Configuración de RENDER
+  
+![imagen](https://github.com/Ruizerick26/portafolio/assets/117743844/25adf5e8-61a1-4679-9df9-624919ac0eca)
+
+- RESULTADO
+![imagen](https://github.com/Ruizerick26/portafolio/assets/117743844/2d8f04fa-68c8-43db-a33f-dbe492f38af2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
